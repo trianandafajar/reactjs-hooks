@@ -7,7 +7,7 @@ const BasicUseEffect = () => {
       setCount((count) => count + 1);
     }, 1000);
   }, []);
-  return <div>Render {count} time !</div>;
+  return <div>Render {count} time </div>;
 };
 
 export default BasicUseEffect;
