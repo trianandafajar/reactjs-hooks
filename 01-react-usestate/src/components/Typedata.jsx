@@ -1,39 +1,40 @@
 import { useState } from "react";
 
 const Typedata = () => {
-  const [brand, setBrand] = useState("BMW");
-  const [model, setModel] = useState("X5");
-  const [year, setYear] = useState(2022);
-  const [color, setColor] = useState("red");
+  const [car, setCar] = useState({
+    brand: "BMW",
+    model: "X5",
+    year: 2022,
+    color: "red",
+  });
 
-  const setFord = (e) => {
-    e.preventDefault();
-    setBrand("Ford");
-    setModel("Mustang");
-    setYear(2020);
-    setColor("blue");
+  // Fungsi untuk mengubah data mobil
+  const updateCar = (brand, model, year, color) => {
+    setCar({ brand, model, year, color });
   };
 
-  const setBMW = (e) => {
-    e.preventDefault();
-    setBrand("BMW");
-    setModel("X5");
-    setYear(2022);
-    setColor("red");
-  };
   return (
-    <>
-      <h1>By {brand}</h1>
-      <p>
-        It is a {color} {model} from {year}
+    <div className="flex flex-col items-center space-y-4 p-4">
+      <h1 className="text-xl font-bold">By {car.brand}</h1>
+      <p className="text-lg">
+        It is a <span className="font-semibold">{car.color}</span> {car.model} from {car.year}
       </p>
-      <button type="button" onClick={setFord}>
-        Sow Ford
-      </button>
-      <button type="button" onClick={setBMW}>
-        Sow BMW
-      </button>
-    </>
+
+      <div className="flex space-x-2">
+        <button
+          className="px-4 py-2 bg-blue-600 text-white rounded-md font-medium"
+          onClick={() => updateCar("Ford", "Mustang", 2020, "blue")}
+        >
+          Show Ford
+        </button>
+        <button
+          className="px-4 py-2 bg-red-600 text-white rounded-md font-medium"
+          onClick={() => updateCar("BMW", "X5", 2022, "red")}
+        >
+          Show BMW
+        </button>
+      </div>
+    </div>
   );
 };
 
