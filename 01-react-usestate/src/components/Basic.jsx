@@ -2,24 +2,32 @@ import { useState } from "react";
 
 const Basic = () => {
   const [color, setColor] = useState("red");
+
+  // Array warna yang tersedia
+  const colors = ["red", "blue", "green", "yellow", "purple"];
+
   return (
-    <>
-      <h1>Color: {color}</h1>
+    <div className="flex flex-col items-center space-y-4">
+      <h1 className="text-xl font-bold">Color: {color}</h1>
+
       <div
-        style={{
-          marginBottom: 20,
-          width: 100,
-          height: 100,
-          backgroundColor: color,
-        }}
+        className="w-24 h-24 rounded-md"
+        style={{ backgroundColor: color }}
       ></div>
-      <button type="button" onClick={() => setColor("blue")}>
-        Blue
-      </button>
-      <button type="button" onClick={() => setColor("red")}>
-        Red
-      </button>
-    </>
+
+      <div className="flex space-x-2">
+        {colors.map((col) => (
+          <button
+            key={col}
+            className="px-4 py-2 rounded-md text-white font-medium"
+            style={{ backgroundColor: col }}
+            onClick={() => setColor(col)}
+          >
+            {col.charAt(0).toUpperCase() + col.slice(1)}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 };
 
